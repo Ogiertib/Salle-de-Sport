@@ -1,0 +1,36 @@
+@layout('layout')
+
+@section('body')
+  <h2> Clients </h2>
+<section>
+    <p>
+        <a href="{{route('client.createClient') }}" class="btn btn-success"">+</a>
+    </p>
+</section>
+<main>
+  <ul class="list-group mb-3">
+    @each(client in clients)
+    <li class="list-group-item">
+      <div class="d-flex.justify-content-between align-items-center">
+         Nom du client: {{ client.name }} </br>
+         Information Contact : {{ client.user?.name ? client.user?.name : "pas de contact" }},
+          {{ client.user?.email ? client.user?.email : "" }}
+          </br>
+          <a href="{{route("client.showClient", {id: client.id}) }}" class="btn btn-success">Modifier</a>
+        </a>
+      </div>
+    </li>
+    @endeach
+  </ul>
+</main>
+<nav>
+  <ul class=" pagination">
+    @each(anchor in clients.getUrlsForRange(1, clients.lastPage))
+    <li class="page-item">
+      <a href="{{ anchor.url}}" class="page-link">{{anchor.page}}</a>
+    </li>
+
+    @endeach
+  </ul>
+</nav>
+@end

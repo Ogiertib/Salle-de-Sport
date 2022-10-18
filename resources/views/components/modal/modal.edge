@@ -1,0 +1,30 @@
+{{{ await $slots.trigger() }}}
+
+<dialog id="{{id}}">
+ 
+    <header>
+        {{{ await $slots.header() }}}
+    </header>
+
+    <main>
+        {{{ await $slots.main() }}}
+    </main>
+
+    <footer>
+        {{{ await $slots.actions() }}}
+    </footer>
+
+</dialog>
+
+<script>
+    const cancelElement = document.getElementById("cancel-{{id}}")
+    const triggerElement = document.getElementById("trigger-{{id}}")
+    const modalElement = document.getElementById("{{id}}")
+
+    triggerElement.addEventListener('click', () => {
+        modalElement.showModal()
+    })
+    cancelElement.addEventListener('click', () => {
+        modalElement.close()
+    })
+</script>

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "tightenco/ziggy": "^1.5"
+    }
+}
