@@ -8,6 +8,7 @@
     "build"
   ],
   "compilerOptions": {
+    "lib": ["dom"],
     "jsx": "react",
     "outDir": "build",
     "rootDir": "./",
