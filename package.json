@@ -6,6 +6,10 @@
     "server": "node ace serve --watch",
     "start": "node server.js"
   },
+  "engines": {
+    "node":"16.14.2",
+    "npm":"8.5.0"
+  },
   "devDependencies": {
     "@adonisjs/assembler": "^5.8.1",
     "@babel/preset-react": "^7.18.6",
