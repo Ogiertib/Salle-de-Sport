@@ -23,6 +23,7 @@ const databaseConfig: DatabaseConfig = {
   connection: Env.get('DB_CONNECTION'),
 
   connections: {
+  
     /*
     |--------------------------------------------------------------------------
     | SQLite
@@ -38,6 +39,7 @@ const databaseConfig: DatabaseConfig = {
       client: 'sqlite',
       connection: {
         filename: Application.tmpPath('db.sqlite3'),
+
       },
       pool: {
         afterCreate: (conn, cb) => {
@@ -51,7 +53,7 @@ const databaseConfig: DatabaseConfig = {
       healthCheck: false,
       debug: false,
     },
-
+    
   }
 }
 

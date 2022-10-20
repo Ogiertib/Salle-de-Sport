@@ -29,9 +29,13 @@ export default class UpdateUserValidator {
       rules.minLength(3)
     ]),
     email: schema.string({trim: true},[
-        rules.minLength(5)
+        rules.minLength(5),
+        rules.unique({table: 'users', column: 'email'})
     ]),
-    
+    password: schema.string({trim: true},[
+      rules.minLength(7)
+  ]),
+  
   })
 
   /**

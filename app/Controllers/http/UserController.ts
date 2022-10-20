@@ -2,6 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Client from 'App/Models/Client'
 import Franchise from 'App/Models/Franchise'
 import User from 'App/Models/User'
+import UpdateUserValidator from 'App/Validators/UpdateUserValidator'
 
 export default class UsersController {
     prompt: any
@@ -29,8 +30,9 @@ export default class UsersController {
     const name = request.input('name')
     const password = request.input('password')
     const user = await User.query().where('email', email).where('name', name).firstOrFail()
+    const data = await request.validate({UpdateUserValidator})
     user
-        .merge({...user, password : password })
+        .merge({...data, password : password })
         .save()
     session.flash({success: "Le mot de passe a bien été changé"})
     return response.redirect().toRoute('/login')
