@@ -30,8 +30,8 @@
         <div class="navbar text-light" style="background-color: #008e90;" >
             <div class="container-fluid">
                 <div class=""> 
-                <a class="navbar-brand text-light" href="/">{{ (auth.user.role == 1 || auth.user.role == 3)  ? "Franchise" :''}}</a> 
-                    <a class="text-light navbar-brand" href="/Clients">{{ (auth.user.role == 1 || auth.user.role == 2 ) ? "Client" :''}} </a>
+                <a class="navbar-brand text-light" href="/">Franchise" </a> 
+                    <a class="text-light navbar-brand" href="/Clients">Client</a>
                 </div>
                 <div class="">
                     @if(auth.isLoggedIn)
