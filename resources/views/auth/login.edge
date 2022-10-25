@@ -1,4 +1,6 @@
- <head>
+<!doctype html>
+<html lang="fr">
+    <head>
         <meta charset="UTF-8">
         <link 
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
@@ -12,26 +14,27 @@
             crossorigin="anonymous"
         >
         </script>
-        <title>Franchise</title>
     </head>
-
 @section('body')
+
+<div class="row ml-3">
   <h1> Se connecter </h1>
   <form action="" method="POST">
-    <div class="mb-3">
+    <div class="col-3 mb-3 ml-3">
     @!component('components/input',{
-        label:'Email',
+        label:'Votre Email',
         name:'email',
         type:'email'
     })
     </div>
-     <div class="mb-3">
+     <div class="col-3 mb-3">
     @!component('components/input',{
         label:'Mot de passe',
         name:'password',
         type:'password',
     })
     </div>
-       <button class="btn btn-primary">Se connecter</button>
+       <button class="btn btn-success">Se connecter</button>
   </form>
+  </div>
 @endsection

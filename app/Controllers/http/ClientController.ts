@@ -55,7 +55,7 @@ export default class ClientController {
     async createClient({view}:HttpContextContract) {
         const client = new Clients()
         const user = await User.query().where('role', 2)
-        return view.render('Clients',{
+        return view.render('home/createClient',{
             client,
             user
         })
