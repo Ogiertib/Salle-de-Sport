@@ -2,11 +2,11 @@
   "name": "sds",
   "version": "1.0.1",
   "private": true,
-  "scripts": {
-    "server": "node ace serve --watch",
-    "start": "node build/server.js",
-    "migrate": "node build/ace migration:run --force"
-  },
+    "scripts": {
+      "dev": "node ace serve --watch",
+      "build": "node ace build --production",
+      "start": "node server.js"
+    },
   "engines": {
     "node": "16.14.2",
     "npm": "8.5.0"
