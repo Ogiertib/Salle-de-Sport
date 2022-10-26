@@ -2,7 +2,6 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Client from 'App/Models/Client'
 import Franchise from 'App/Models/Franchise'
 import User from 'App/Models/User'
-import UpdateUserValidator from 'App/Validators/UpdateUserValidator'
 
 export default class UsersController {
     prompt: any
