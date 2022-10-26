@@ -30,7 +30,7 @@ export default class UsersController {
     const name = request.input('name')
     const password = request.input('password')
     const user = await User.query().where('email', email).where('name', name).firstOrFail()
-    const data = await request.validate({UpdateUserValidator})
+    const data = await request.validate
     user
         .merge({...data, password : password })
         .save()
