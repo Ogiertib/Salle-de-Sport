@@ -56,6 +56,7 @@
     "pg": "^8.8.0",
     "phc-argon2": "^1.1.3",
     "proxy-addr": "^2.0.7",
+    "psql": "^0.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
