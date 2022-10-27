@@ -14,11 +14,10 @@ declare module '@ioc:Adonis/Core/Env' {
   | The `default` export from the "../env.ts" file exports types for the
   | validated environment variables. Here we merge them with the `EnvTypes`
   | interface so that you can enjoy intellisense when using the "Env"
-  | module.
+  | module.kgjijepoie
   |
   */
-
-  
+  type CustomTypes = typeof import('../env').default
   interface EnvTypes extends CustomTypes {
   }
 }
