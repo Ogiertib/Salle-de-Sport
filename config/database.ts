@@ -34,8 +34,8 @@ const databaseConfig: DatabaseConfig = {
     | npm i sqlite3
     |
     */
-     pg : {
-      client: 'pg',
+     PostgreSQL : {
+      client: 'postgresql',
       connection: {
         host: Env.get('PG_HOST'),
         port: Env.get('PG_PORT'),
