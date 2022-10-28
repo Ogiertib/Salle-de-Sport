@@ -1,0 +1,54 @@
+@layout('layout')
+
+@section('body')
+  <h2> Franchises </h2>
+<section>
+ @if(auth.user?.role === 1)
+    <p>
+        <a href="{{route('franchise.createFranchise') }}" class="btn btn-success"">Créer une franchise</a>
+    </p>
+  @endif
+</section>
+<main>
+  <div id="root"></div>
+  <ul class="list-group mb-3">
+  
+ <input type="search" id="" /> 
+    @each(franchise in franchises)
+    <li class="list-group-item">
+      <div class="d-flex.justify-content-between align-items-center">
+        <div>
+          Nom : {{franchise.name}}</br>
+           Adresse : {{franchise.address}}</br>
+           Nom du Client: {{franchise.client?.name ? franchise.client.name : "Pas de client"}}</br>
+           contact : {{franchise.user?.name ? franchise.user?.name : "pas de contact" }}
+           {{franchise.user?.email ? franchise.user?.email : "" }}
+        <p>
+        {{franchise.active ? "Franchise ouverte" : "Franchise Fermé"}}
+        </p>
+        <p> La franchise peut : 
+          {{ franchise.drink ? "Vendre des boissons," : '' }}
+          {{ franchise.newsletter ? "envoyer des newsletters," : ''}}
+          {{ franchise.planning ? "Gérer le planning équipe.":''}}
+        </p>
+          @if(auth.user?.role === 1)
+          <a href="{{route("franchise.showFranchise", {id: franchise.id}) }}"class="btn btn-success"> Modifier </a>
+          @endif
+
+        </div>
+      </div>
+    </li>
+    @endeach
+  </ul>
+</main>
+<nav>
+  <ul class=" pagination">
+    @each(anchor in franchises.getUrlsForRange(1, franchises.lastPage))
+    <li class="page-item">
+      <a href="{{ anchor.url }}" class="page-link">{{ anchor.page }}</a>
+    </li>
+
+    @endeach
+  </ul>
+</nav>
+@end

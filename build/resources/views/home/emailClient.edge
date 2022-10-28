@@ -1,0 +1,48 @@
+@layout('layout')
+
+@section('body')
+
+<h1>Validation de l'email</h1>
+
+<form action="" method="post" class="">
+     <div class="mb-3">
+        <label for="name">Nom du contact</label>
+        <input
+            id="name"
+            name="name"
+            type="text"
+            value=""
+        >
+        </input>
+    </div>
+    <div class="mb-9">
+        <label for="email">Email du contact</label>
+        <input
+            id="email"
+            name="email"
+            type="email"
+            value=""
+        >
+        </input>
+    </div>
+    <div class="mb-9">
+        <label for="message">Text à envoyer</label>
+        <textarea
+            class="form-control"
+            id="message"
+            rows="7"
+            name="message"
+            type="textarea"
+            value="votre message"
+
+        >Nous sommes heureux de vous compter parmis nous!
+         pour valider votre compte veuillez vous connecter a l'address: 
+         http://127.0.0.1:3333/Mdp
+        votre email sera votre identifiant 
+        </textarea>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-success mb-3">envoyer l'email</button>
+    </div>
+</form>
+@endsection

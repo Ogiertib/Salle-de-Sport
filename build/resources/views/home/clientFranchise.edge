@@ -1,0 +1,27 @@
+@layout('layout')
+
+@section('body')
+  <h2> Franchise du Client {{client.name}} </h2>
+  
+<section>
+
+</section>
+<main>
+  <ul class="list-group mb-3">
+    @each(franchise in franchise)
+    <li class="list-group-item">
+      <div class="d-flex.justify-content-between align-items-center">
+        <h3>{{ franchise.name }} </h3> </br>
+         Adresse: {{ franchise.address }} </br>
+         Contact : {{franchise.user.email}} </br>
+         La franchise peut : 
+          {{ franchise.drink ? "Vendre des boissons," : '' }}
+          {{ franchise.newsletter ? "envoyer des newsletters," : ''}}
+          {{ franchise.planning ? "Gérer le planning équipe.":''}}
+      </div>
+    </li>
+    @endeach
+  </ul>
+</main>
+
+@end

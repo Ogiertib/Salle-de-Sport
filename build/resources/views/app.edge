@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+            crossorigin="anonymous"
+        >
+        <script 
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
+            crossorigin="anonymous"
+        >
+        </script>
+        <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+
+        <script
+          src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
+          crossorigin></script>
+
+        <script
+          src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossorigin></script>
+        <script src="{{ asset('assets/app.js') }}" defer></script>
+        <title>Franchise</title>
+    </head>
+    <body>
+        <div class="navbar text-light" style="background-color: #008e90;" >
+            <div class="container-fluid">
+                <div class=""> 
+                <a class="navbar-brand text-light" href="/">Franchise </a> 
+                    <a class="text-light navbar-brand" href="/Clients">Client</a>
+                </div>
+                <div class="">
+                    @if(auth.isLoggedIn)
+                    <p class>
+                         {{ auth.user.name }}
+                        <a href="{{route('logout') }}" class="btn btn-success"">Se déconnecter</a>
+                    </p>
+                    @else
+                    <a href="{{route('login') }}" class="btn btn-success"">Se connecter</a>
+                    @end
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+            @!component('components/flash')
+
+            @inertia()
+
+        </div>
+    </body>
+</html>
+

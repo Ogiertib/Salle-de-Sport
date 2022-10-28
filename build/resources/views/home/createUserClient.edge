@@ -1,0 +1,26 @@
+@layout('layout')
+
+@section('body')
+  <h2> Créer un nouveau contact pour le Client  </h2>
+    <form action="" method="post" enctype="multipart/from-data">
+       <div class="row mb-3">
+            <div class="col">
+                @!component('components/input',{
+                    label:'name',
+                    name: 'name',
+                    value: user.name
+                })
+            </div>
+            <div class="col">
+                @!component('components/input',{
+                    label:'email',
+                    name: 'email',
+                    value: user.email
+                })
+            </div>
+        </div>
+        <div>
+        <button class="btn btn-success">créer un contact</button>
+        </div>  
+    </form>
+@end

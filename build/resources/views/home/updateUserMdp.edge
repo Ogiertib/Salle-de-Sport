@@ -1,0 +1,33 @@
+@layout('layout')
+
+@section('body')
+  <h2> Créer un nouveau mot de passe </h2>
+    <form action="" method="post" enctype="multipart/from-data">
+       <div class="row mb-3">
+            <div class="col">
+                @!component('components/input',{
+                    label:'email',
+                    name: 'email',
+                    type:'email'
+                })
+            </div>
+            <div class="col">
+                @!component('components/input',{
+                    label:'Votre nom',
+                    name: 'name',
+                    type:'text'
+                })
+            </div>
+            <div class="col">
+                @!component('components/input',{
+                    label:'Mot de passe',
+                    name: 'password',
+                    type: 'password',
+                })
+            </div>
+        </div>
+        <div>
+        <button class="btn btn-success">Changer son mot de passe</button>
+        </div>  
+    </form>
+@end

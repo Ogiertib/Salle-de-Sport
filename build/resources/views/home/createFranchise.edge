@@ -1,0 +1,53 @@
+@layout('layout')
+
+@section('body')
+  <h2> Créer une nouvelle franchise </h2>
+    <form action="" method="post" enctype="multipart/from-data">
+       <div class="row mb-3">
+            <div class="col-5 mb-3">
+                @!component('components/input',{
+                    label:'name',
+                    name: 'name',
+                    value: franchise.name
+                })
+            </div>
+             <div class="mb-3">
+                @!component('components/input',{
+                    label:'address',
+                    name: 'address',
+                    value: franchise.address
+                })
+            </div>
+            <div class="col-7 mb-3">
+                @!component('components/inputCreate',{
+                    label:'Client',
+                    name: 'clientId',
+                    value: franchise.clientId,
+                    options: client.reduce((acc, c) =>({...acc, [c.id]: c.name}), {})
+                })   
+            </div>
+             <div class="col-6 mb-3"> 
+               
+                @!component('components/input',{
+                    label:'Email de la franchise',
+                    name: 'userId',
+                    value: franchise.userId,
+                    options: user.reduce((acc, c) =>({...acc, [c.id]: c.email}), {})
+                })
+            </div>
+            <div class="col-2 align-self-center">
+                <a class="btn btn-outline-success" href="{{route('emailFranchise') }}">Ajouter</a>
+             </div>
+            <div class="mb-3">
+                @!component('components/input',{
+                    label:'Salle Ouvert',
+                    name:'active',
+                    type:'checkbox',
+                    checked: franchise.active
+                })  
+            </div>
+        </div>
+        <button class="btn btn-success">créer une franchise</button>
+          <a class="btn btn-outline-success" href="{{route('/') }}">Annuler</a>
+    </form>
+@end

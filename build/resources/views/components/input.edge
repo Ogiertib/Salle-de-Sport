@@ -1,0 +1,63 @@
+<div>
+    <label for="{{ name }}"> {{ label }} </label>
+    @if(options)
+        <select 
+            name="{{ name }}" 
+            id="{{ name }}"
+            class="form-control {{ flashMessages.has(`errors.${name}`) ? 'is-invalid': " "}}"
+        >
+            @each(key in Object.keys(options))
+                <option value="{{key}}" {{ flashMessages.get(name) || value == key ? 'selected' : '' }}>{{options[key]}}</option>
+            @endeach
+        </select>
+    @elseif(type === 'textarea')
+        <textarea
+            id="{{ name }}" 
+            type="textarea" 
+            name="{{ name }}" 
+            class="form-control"
+        > {{ flashMessages.get(name) || value || " "}}  </textarea>  
+    
+    @elseif(type === 'checkbox')
+         <input
+            id="{{ name }}" 
+            type="checkbox" 
+            name="{{ name }}" 
+            class="form-check-input"
+            {{ checked  ? 'checked' : "" }} 
+        >
+        </input>
+
+    @elseif(type === 'email')
+    <input 
+            id="{{ name }}" 
+            type= "email" 
+            name="{{ name }}" 
+            value="{{ flashMessages.get(name) || value || " "}}" 
+            class="form-control {{ flashMessages.has(`errors.${name}`) ? 'is-invalid': " "}}"
+        >
+    </input>
+
+     @elseif(type === 'password')
+    <input 
+            id="{{ name }}" 
+            type="password" 
+            name="{{ name }}" 
+            value="{{ flashMessages.get(name) || value || " "}}" 
+            class="form-control {{ flashMessages.has(`errors.${name}`) ? 'is-invalid': " "}}"
+        ></input>
+    @else
+        <input 
+            id="{{ name }}" 
+            type="text" 
+            name="{{ name }}" 
+            value="{{ flashMessages.get(name) || value || " "}}" 
+            class="form-control {{ flashMessages.has(`errors.${name}`) ? 'is-invalid': " "}}"
+        >
+    @endif 
+    @if(flashMessages.has(`errors.${name}`))   
+        <div class="invalid-feedback">
+            {{flashMessages.get(`errors.${name}`)}}
+        </div>
+    @endif  
+</div>

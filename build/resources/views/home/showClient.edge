@@ -1,0 +1,107 @@
+@layout('layout')
+
+@section('body')
+  <div class="row" >
+    <h2> Modifier le client {{ client.name }}</h2>
+
+    @component('components/modal/modalModify', {id: 'Client'})
+            @slot('triger')
+                <div>
+                    <button class="btn btn-outline-danger" id="triger-Client" type="button">modify</button>
+                </div>
+            @end
+            @slot('header')
+                <h1> Suprimer {{client.name}}</h1>
+            @end
+            @slot('actions')
+                <form 
+                    method='post'
+                    action ="{{ route('/') }}"
+                >
+                    <div class="flex">
+                        <button class="btn btn-danger" value="default">Supprimer</button>
+                        <button class="btn btn-success" type="button" id="cancel-Client">Annuler</button>
+                    </div>
+                </form>
+            @end
+        @end
+
+     @component('components/modal/modal', {id: 'deleteClient'})
+            @slot('trigger')
+                <div>
+                    <button class="btn btn-outline-danger" id="trigger-deleteClient" type="button">Supprimer le Client</button>
+                </div>
+            @end
+            @slot('header')
+                <h1> Suprimer {{client.name}}</h1>
+            @end
+
+            @slot('main')
+                <div>
+                <p>Etes vous sur de vouloir supprimer le client</p>
+                </div>
+            @end
+
+            @slot('actions')
+                <form 
+                    method='post'
+                    action ="{{ route('client.delete', {id : client.id}) }}?_method=DELETE"
+                >
+                    <div class="flex">
+                        <button class="btn btn-danger" value="default">Supprimer</button>
+                        <button class="btn btn-success" type="button" id="cancel-deleteClient">Annuler</button>
+                    </div>
+                </form>
+            @end
+     @end
+  </div>
+    <form action="" method="post" enctype="multipart/from-data">
+       <div class="col-6">
+            @!component('components/input',{
+                label:'name',
+                name: 'name',
+                value: client.name
+            })
+       </div>
+       <div class="row">
+            <div class="col-8">
+                @!component('components/input',{
+                    label:'Contact',
+                    name: 'userId',
+                    value: client.userId,
+                    options: user.reduce((acc, c) =>({...acc, [c.id]: c.email}), {})
+                })
+            </div>
+            <div class="col-1 align-self-end">
+                <a class="btn btn-outline-success" href="{{route('emailClient') }}">+</a>
+            </div>
+        </div>
+         <div class="mb-3">
+            @!component('components/input',{
+                label:'vendre des boissons',
+                name: 'drink',
+                type:'checkbox',
+                checked: client.drink
+            })
+       </div>
+        <div class="mb-3">
+            @!component('components/input',{
+                label:'envoyer des newsletter',
+                name:'newsletter',
+                type:'checkbox',
+                checked: client.newsletter
+            })
+        </div>
+         <div class="mb-3">
+            @!component('components/input',{
+                label:'gerer les plannings',
+                name: 'planning',
+                type:'checkbox',
+                checked: client.planning
+            })
+       </div>
+        <button class="btn btn-success">Modifier</button> 
+    </form>
+         <a href="{{route('Clients') }}" class="btn btn-outline-success"">Annuler</a>
+@end
+

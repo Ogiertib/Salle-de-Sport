@@ -1,0 +1,54 @@
+@layout('layout')
+
+@section('body')
+  <h2> Créer un nouvau client </h2>
+    <form action="" method="post" enctype="multipart/from-data">
+       <div class="row mb-3">
+            <div class="col-7">
+                @!component('components/input',{
+                    label:'name',
+                    name: 'name',
+                    value: client.name
+                })
+            </div>
+            
+             <div class="col-7">
+                @!component('components/input',{
+                    label:'Contact',
+                    name: 'userId',
+                    value: client.userId,
+                    options: user.reduce((acc, c) =>({...acc, [c.id]: c.email}), {})
+                })
+        </div>
+        <div class="col-2 align-self-center">
+             <a class="btn btn-outline-success" href="{{route('emailClient') }}">Ajouter</a>
+        </div>
+       </div>
+        <div class="mb-3">
+            @!component('components/input',{
+                label:'Vendre des boissons',
+                name:'drink',
+                type:'checkbox',
+                checked: client.drink
+            })
+        </div>
+         <div class="mb-3">
+            @!component('components/input',{
+                label:' Gerer le planning équipe',
+                name:'planning',
+                type:'checkbox',
+                checked: client.planning
+            })
+        </div>
+         <div class="mb-3">
+            @!component('components/input',{
+                label:' Envoyer des newsletters',
+                name:'newsletter',
+                type:'checkbox',
+                checked: client.newsletter
+            })
+        </div>
+        <button class="btn btn-success">crée un nouveau Client</button>
+         <a class="btn btn-outline-success" href="{{route('/Clients') }}">Annuler</a>
+    </form>
+@end
